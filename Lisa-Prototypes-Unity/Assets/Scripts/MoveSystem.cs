@@ -22,6 +22,8 @@ private Vector3 resetPosition;
         resetPosition = this.transform.localPosition; 
     }
 
+   
+
     // Update is called once per frame
     void Update()
     {
@@ -35,8 +37,8 @@ private Vector3 resetPosition;
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
         }
         }
-       
     }
+
 
     private void OnMouseDown(){
         if (Input.GetMouseButtonDown(0)){
@@ -62,8 +64,7 @@ private Vector3 resetPosition;
             finish = true; 
             IsCorrectlyPlaced = true;  
         
-        
-            Destroy(gameObject); 
+    
         }
           else
          {
