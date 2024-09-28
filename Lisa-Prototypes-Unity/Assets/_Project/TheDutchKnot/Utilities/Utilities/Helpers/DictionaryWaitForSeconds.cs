@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace tdk.Utilities
 {
-    public static class DictionaryWaitForSeconds
+    public static class WaitForSecondsUtils
     {
         static readonly Dictionary<float, WaitForSeconds> WaitForSecondsDict = new(100, new FloatComparer());
 

@@ -1,30 +1,34 @@
 using System.Collections.Generic;
 using UnityEngine.Pool;
 
-public static class ObjectPoolManager {
-    static readonly Dictionary<int, IObjectPool<IPoolObject>> _pools = new();
+namespace Tdk.Systems.ObjectPooling {
+    public static class ObjectPoolManager {
+        const bool CollectionCheck = true;
+        const int DefaultCapacity = 10;
+        const int MaxCapacity = 100;
 
-    public static IPoolObject Spawn(IPoolObjectSettings s) => GetPoolFor(s).Get();
-    public static void Despawn(IPoolObject obj) => GetPoolFor(obj.Settings).Release(obj);
+        static readonly Dictionary<IPoolObjectSettings, IObjectPool<IPoolObject>> pools = new();
 
-    static IObjectPool<IPoolObject> GetPoolFor(IPoolObjectSettings settings) {
+        public static IPoolObject Spawn(IPoolObjectSettings s) => GetPoolFor(s).Get();
+        public static void Despawn(IPoolObject obj) => GetPoolFor(obj.Settings).Release(obj);
 
-        if (_pools.TryGetValue(settings.PoolID, out IObjectPool<IPoolObject> pool)) return pool;
+        static IObjectPool<IPoolObject> GetPoolFor(IPoolObjectSettings settings) {
 
-        settings.PoolID = _pools.Count + 1;
+            if (pools.TryGetValue(settings, out IObjectPool<IPoolObject> pool)) return pool;
 
-        pool = new ObjectPool<IPoolObject>(
-            settings.Create,
-            settings.OnGet,
-            settings.OnRelease,
-            settings.OnDestroyPoolObject,
-            settings.CollectionCheck,
-            settings.DefaultCapacity,
-            settings.MaxCapacity
-            );
-        _pools.Add(settings.PoolID, pool);
-        return pool;
+            pool = new ObjectPool<IPoolObject>(
+                settings.Create,
+                settings.OnGet,
+                settings.OnRelease,
+                settings.OnDestroyPoolObject,
+                CollectionCheck,
+                DefaultCapacity,
+                MaxCapacity
+                );
+            pools.Add(settings, pool);
+            return pool;
+        }
+
+        public static void Clear() => pools.Clear();
     }
-
-    public static void Clear() => _pools.Clear();
 }
