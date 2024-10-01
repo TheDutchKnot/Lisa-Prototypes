@@ -11,8 +11,10 @@ namespace Tdk.Systems.ObjectPooling
         [SerializeField] GameObject prefab;
 
         public float DespawnDelay = 5f;
-        public float Speed = 3f;
+        public float Speed;
 
+
+        
         #region Interface
         public IPoolObject Create()
         {
@@ -21,8 +23,9 @@ namespace Tdk.Systems.ObjectPooling
             instance.name = prefab.name;
 
             if (instance.TryGetComponent(out IPoolObject obj))
-            {
+            {   
                 obj.Settings = this;
+                Speed = Random.Range(1f, 10f);
                 return obj;
             }
             throw new System.Exception("Object not poolable, no Ipoolobject found");
