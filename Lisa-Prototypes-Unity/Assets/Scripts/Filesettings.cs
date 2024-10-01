@@ -3,26 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Tdk.Systems.ObjectPooling {
+namespace Tdk.Systems.ObjectPooling
+{
     [CreateAssetMenu(fileName = "Filesettings")]
-    public class Filesettings : ScriptableObject, IPoolObjectSettings {
+    public class Filesettings : ScriptableObject, IPoolObjectSettings
+    {
         [SerializeField] GameObject prefab;
 
         public float DespawnDelay = 5f;
         public float Speed = 3f;
 
         #region Interface
-        public IPoolObject Create() {
+        public IPoolObject Create()
+        {
             GameObject instance = Instantiate(prefab);
             instance.SetActive(false);
             instance.name = prefab.name;
 
-            if (instance.TryGetComponent(out IPoolObject obj)) {
+            if (instance.TryGetComponent(out IPoolObject obj))
+            {
                 obj.Settings = this;
                 return obj;
             }
             throw new System.Exception("Object not poolable, no Ipoolobject found");
         }
+
+
 
         public void OnDestroyPoolObject(IPoolObject obj) => Destroy(obj.Instance);
         public void OnGet(IPoolObject obj) => obj.Instance.SetActive(true);
@@ -30,3 +36,4 @@ namespace Tdk.Systems.ObjectPooling {
         #endregion
     }
 }
+
