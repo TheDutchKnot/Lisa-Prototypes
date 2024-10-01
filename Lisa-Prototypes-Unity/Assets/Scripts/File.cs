@@ -7,12 +7,16 @@ namespace Tdk.Systems.ObjectPooling {
         public IPoolObjectSettings Settings { get; set; }
         public GameObject Instance => gameObject;
 
-       Filesettings Filesettings => (Filesettings)Settings;
+        Filesettings Filesettings => (Filesettings)Settings;
 
-        private void OnEnable() {
-            if (Filesettings== null) return;
+        void OnEnable() {
+            if (Filesettings == null) return;
 
             StartCoroutine(DespawnAfterDelay(Filesettings.DespawnDelay));
+        }
+
+        void Update() {
+            transform.Translate(Filesettings.Speed * Time.deltaTime * Vector3.down);
         }
 
         IEnumerator DespawnAfterDelay(float delay) {

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Small File
   m_EditorClassIdentifier: 
   prefab: {fileID: 6359422610380768323, guid: 6668c068d99fa4ae9a8826e224b1d44d, type: 3}
-  DespawnDelay: 5
+  DespawnDelay: 3
+  Speed: 6

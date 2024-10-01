@@ -9,6 +9,7 @@ namespace Tdk.Systems.ObjectPooling {
         [SerializeField] GameObject prefab;
 
         public float DespawnDelay = 5f;
+        public float Speed = 3f;
 
         #region Interface
         public IPoolObject Create() {
@@ -23,17 +24,9 @@ namespace Tdk.Systems.ObjectPooling {
             throw new System.Exception("Object not poolable, no Ipoolobject found");
         }
 
-        public void OnDestroyPoolObject(IPoolObject obj) {
-            Destroy(obj.Instance);
-        }
-
-        public void OnGet(IPoolObject obj) {
-            obj.Instance.SetActive(true);
-        }
-
-        public void OnRelease(IPoolObject obj) {
-            obj.Instance.SetActive(false);
-        }
+        public void OnDestroyPoolObject(IPoolObject obj) => Destroy(obj.Instance);
+        public void OnGet(IPoolObject obj) => obj.Instance.SetActive(true);
+        public void OnRelease(IPoolObject obj) => obj.Instance.SetActive(false);
         #endregion
     }
 }
