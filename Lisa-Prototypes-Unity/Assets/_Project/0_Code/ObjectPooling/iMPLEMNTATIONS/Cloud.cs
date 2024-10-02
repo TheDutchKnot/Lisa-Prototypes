@@ -6,7 +6,7 @@ namespace Tdk.Systems.ObjectPooling
     public class Cloud : MonoBehaviour
     {
         public CustomTimer timer;
-        public Score score;
+
         void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out IPoolObject obj))
@@ -33,7 +33,7 @@ namespace Tdk.Systems.ObjectPooling
         IEnumerator DespawnAfterDelay(IPoolObject obj, float delay)
         {
             yield return new WaitForSeconds(delay);
-
+            
         }
     }
 }
