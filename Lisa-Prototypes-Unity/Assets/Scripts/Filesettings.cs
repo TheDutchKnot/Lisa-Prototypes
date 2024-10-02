@@ -13,8 +13,10 @@ namespace Tdk.Systems.ObjectPooling
         public float DespawnDelay = 5f;
         public float Speed;
 
+        public float DownloadTime = 5f;
 
-        
+
+
         #region Interface
         public IPoolObject Create()
         {
@@ -23,7 +25,7 @@ namespace Tdk.Systems.ObjectPooling
             instance.name = prefab.name;
 
             if (instance.TryGetComponent(out IPoolObject obj))
-            {   
+            {
                 obj.Settings = this;
                 Speed = Random.Range(1f, 10f);
                 return obj;
