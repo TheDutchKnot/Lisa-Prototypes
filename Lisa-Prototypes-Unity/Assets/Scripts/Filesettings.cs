@@ -12,9 +12,8 @@ namespace Tdk.Systems.ObjectPooling
 
         public float DespawnDelay = 5f;
         public float Speed;
-
         public float DownloadTime = 5f;
-
+        public int Score = 5;
 
 
         #region Interface

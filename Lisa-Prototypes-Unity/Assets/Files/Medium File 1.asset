@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4428230236418011308, guid: 2831837b8c15e406089e63b6a7a5f8af, type: 3}
   DespawnDelay: 5
-  Speed: 3.61543
+  Speed: 9.832375
+  DownloadTime: 3
+  Score: 40

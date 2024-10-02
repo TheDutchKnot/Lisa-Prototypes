@@ -12,7 +12,6 @@ public class CustomTimer : MonoBehaviour
 
     void Awake()
     {
-
         timerSlider.gameObject.SetActive(false);
         percentageText.gameObject.SetActive(false);
         downloadingText.gameObject.SetActive(false);
