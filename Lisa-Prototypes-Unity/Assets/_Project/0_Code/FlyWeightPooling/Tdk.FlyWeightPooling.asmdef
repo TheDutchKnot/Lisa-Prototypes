@@ -1,0 +1,16 @@
+{
+    "name": "Tdk.FlyWeightPooling",
+    "rootNamespace": "Tdk.FlyWeightPooling",
+    "references": [
+        "GUID:91813d0afc600cd46ac061efd9da67d1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

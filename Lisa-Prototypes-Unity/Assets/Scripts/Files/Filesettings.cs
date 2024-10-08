@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+using Tdk.Systems.WaveSpawning;
 
 namespace Tdk.Systems.ObjectPooling
 {
@@ -14,7 +13,6 @@ namespace Tdk.Systems.ObjectPooling
         public float Speed;
         public float DownloadTime = 5f;
         public int Score = 5;
-
 
         #region Interface
         public IPoolObject Create()
